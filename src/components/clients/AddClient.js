@@ -26,7 +26,7 @@ class AddClient extends Component {
 		// if no balance, display 0
 
 		if (newClient.balance === '') {
-			newClient.balance = '0';
+			newClient.balance = 0;
 		}
 
 		firestore
