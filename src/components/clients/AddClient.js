@@ -21,7 +21,7 @@ class AddClient extends Component {
 
 		const newClient = this.state;
 
-		const { firestore } = this.props;
+		const { firestore, history } = this.props;
 
 		// if no balance, display 0
 
@@ -31,7 +31,7 @@ class AddClient extends Component {
 
 		firestore
 			.add({ collection: 'clients' }, newClient)
-			.then(() => this.props.history.push('/'));
+			.then(() => history.push('/'));
 	};
 
 	render() {
