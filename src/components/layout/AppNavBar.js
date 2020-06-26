@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class AppNavBar extends Component {
 	render() {
 		return (
-			<navbar className='navbar navbar-expand-md navbar-dark bg-dark mb-4'>
+			<nav className='navbar navbar-expand-md navbar-dark bg-dark mb-4'>
 				<div className='container'>
 					<Link to='/' className='navbar-brand'>
 						Freelanciful
@@ -27,7 +27,7 @@ class AppNavBar extends Component {
 						</ul>
 					</div>
 				</div>
-			</navbar>
+			</nav>
 		);
 	}
 }
