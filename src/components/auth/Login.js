@@ -9,6 +9,23 @@ class Login extends Component {
 		email: '',
 		password: ''
 	};
+
+	onSubmit = (e) => {
+		e.preventDefault();
+
+		const { firebase } = this.props;
+		const { email, password } = this.state;
+
+		firebase
+			.login({
+				email,
+				password
+			})
+			.catch((err) => alert('Invalid login credentials'));
+	};
+
+	onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
 	render() {
 		return (
 			<div className='row'>
@@ -20,7 +37,7 @@ class Login extends Component {
 									<i className='fas fa-lock'></i> Login{' '}
 								</span>
 							</h1>
-							<form>
+							<form onSubmit={this.onSubmit}>
 								<div className='form-group'>
 									<label htmlFor='email'>Email</label>
 									<input
