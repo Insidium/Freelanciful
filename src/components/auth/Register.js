@@ -6,11 +6,18 @@ import { firebaseConnect } from 'react-redux-firebase';
 import { notifyUser } from '../../actions/notifyActions';
 import Alert from '../layout/Alert';
 
-class Login extends Component {
+class Register extends Component {
 	state = {
 		email: '',
 		password: ''
 	};
+
+	componentWillMount() {
+		const { allowRegistration } = this.props.settings;
+		if (!allowRegistration) {
+			this.props.history.push('/');
+		}
+	}
 
 	onSubmit = (e) => {
 		e.preventDefault();
@@ -18,12 +25,10 @@ class Login extends Component {
 		const { firebase, notifyUser } = this.props;
 		const { email, password } = this.state;
 
-		firebase
-			.login({
-				email,
-				password
-			})
-			.catch((err) => notifyUser('Invalid login credentials', 'error'));
+		//Register with firebase
+		firebase.createUser({ email, password }).catch((err) => {
+			notifyUser('That user already exists', 'error');
+		});
 	};
 
 	onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -40,7 +45,7 @@ class Login extends Component {
 							) : null}
 							<h1 className='text-center pb-4 pt-3'>
 								<span className='text-info'>
-									<i className='fas fa-lock'></i> Login{' '}
+									<i className='fas fa-file-signature'></i> Register{' '}
 								</span>
 							</h1>
 							<form onSubmit={this.onSubmit}>
@@ -68,7 +73,7 @@ class Login extends Component {
 								</div>
 								<input
 									type='submit'
-									value='Login'
+									value='Register'
 									className='btn btn-info btn-block'
 								/>
 							</form>
@@ -80,7 +85,7 @@ class Login extends Component {
 	}
 }
 
-Login.propTypes = {
+Register.propTypes = {
 	firebase: PropTypes.object.isRequired,
 	notify: PropTypes.object.isRequired,
 	notifyUser: PropTypes.func.isRequired
@@ -88,5 +93,10 @@ Login.propTypes = {
 
 export default compose(
 	firebaseConnect(),
-	connect((state, props) => ({ notify: state.notify }), { notifyUser })
-)(Login);
+	connect(
+		(state, props) => ({ notify: state.notify, settings: state.settings }),
+		{
+			notifyUser
+		}
+	)
+)(Register);
