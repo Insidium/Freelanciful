@@ -36,7 +36,7 @@ class Clients extends Component {
 							<h2>
 								{' '}
 								<span className='text-info'>
-									<i className='fas fa-users'></i>
+									<i className='fas fa-user-tag'></i>
 								</span>{' '}
 								Clients{' '}
 							</h2>
