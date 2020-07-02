@@ -48,7 +48,7 @@ class Settings extends Component {
 							<input
 								type='checkbox'
 								name='allowRegistration'
-								checked={allowRegistration}
+								checked={!!allowRegistration}
 								onChange={this.allowRegistrationChange}
 							/>
 						</div>
