@@ -76,16 +76,23 @@ class ClientDetails extends Component {
 				<div>
 					<div className='row'>
 						<div className='col-md-6'>
-							<Link to='/' className='btn btn-link'>
-								<i className='fas fa-arrow-circle-left' /> Back To Dashboard
+							<Link to='/' className='btn btn-link text-info'>
+								<i className='fas fa-arrow-circle-left text-info' /> Back To
+								Dashboard
 							</Link>
 						</div>
 						<div className='col-md-6'>
 							<div className='btn-group float-right'>
-								<Link to={`/client/edit/${client.id}`} className='btn btn-dark'>
+								<Link
+									to={`/client/edit/${client.id}`}
+									className='btn btn-outline-dark'
+								>
 									Edit
 								</Link>
-								<button onClick={this.onDeleteClick} className='btn btn-danger'>
+								<button
+									onClick={this.onDeleteClick}
+									className='btn btn-outline-danger'
+								>
 									Delete
 								</button>
 							</div>
@@ -124,7 +131,7 @@ class ClientDetails extends Component {
 													})
 												}
 											>
-												<i className='fas fa-pencil-alt' />
+												<i className='fas fa-pencil-alt text-info' />
 											</a>
 										</small>
 									</h3>
