@@ -116,7 +116,7 @@ class EditClient extends Component {
 									<input
 										type='submit'
 										value='Submit'
-										className='btn btn-primary btn-block'
+										className='btn btn-info btn-block'
 									/>
 								</form>
 							</div>

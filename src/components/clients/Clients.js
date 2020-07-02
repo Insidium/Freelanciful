@@ -44,7 +44,7 @@ class Clients extends Component {
 						<div className='col-md-6'>
 							<h5 className='text-right text-secondary'>
 								Total Outstanding:{' '}
-								<span className='text-primary'>
+								<span className='text-info'>
 									${parseFloat(totalOwed).toFixed(2)}
 								</span>
 							</h5>
